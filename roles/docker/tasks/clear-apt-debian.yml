@@ -1,0 +1,5 @@
+---
+- name: Clear APT Cache
+  apt:
+    autoclean: 'yes'
+    autoremove: 'yes'
