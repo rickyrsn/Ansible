@@ -1,0 +1,11 @@
+---
+- name: Installing PHP Modules
+  apt:
+    name: '{{php_modules}}'
+    state: 'latest'
+    update_cache: 'yes'
+
+- name: Cleaning APT Cache
+  apt:
+    autoclean: 'yes'
+    autoremove: 'yes'

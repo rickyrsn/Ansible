@@ -1,3 +1,7 @@
+---
+- include_tasks: setup-debian.yml
+  when: ansible_os_family == 'Debian'
+
 - name: Download and unpack latest WordPress
   unarchive:
     src: https://wordpress.org/latest.tar.gz
