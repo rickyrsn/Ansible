@@ -1,0 +1,9 @@
+---
+- include_tasks: setup-debian.yml
+  when: ansible_os_family == 'Debian'
+
+- name: Ensure handlers are notified now to avoid firewall conflicts
+  meta: flush_handlers
+
+- include_tasks: clear-apt-debian.yml
+  when: ansible_os_family == 'Debian'

@@ -1,0 +1,8 @@
+---
+dependencies:
+- apache2
+- mysql-server
+- php
+- php-mysql
+- libapache2-mod-php
+- python3-pymysql
