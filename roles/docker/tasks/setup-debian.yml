@@ -8,10 +8,9 @@
 
 - name: 'Install HTTPS APT Dependencies'
   apt:
-    name: '{{ item }}'
+    name: '{{ dependencies }}'
     state: 'latest'
     update_cache: 'yes'
-    with_items: 'dependencies'
 
 - name: 'Add Docker Repo APT Key'
   apt_key:

@@ -1,5 +1,8 @@
 ---
 - hosts: all
-  become: true
+  remote_user: ricky
+  become: yes
+  become_method: sudo
+  become_user: root
   roles:
     - docker

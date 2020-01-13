@@ -1,23 +1,26 @@
 ---
-- include_tasks: setup-debian.yml
+- name: Installing Prerequisites
+  include_tasks: setup-debian.yml
   when: ansible_os_family == 'Debian'
 
-- name: Install Docker.
+- name: Install Docker
   package:
     name: "{{ docker_package }}"
     state: 'latest'
   notify: restart docker
 
-- name: Ensure Docker is started and enabled at boot.
+- name: Ensure Docker is started and enabled at boot
   service:
     name: docker
     state: 'started'
     enabled: 'true'
 
-- name: Ensure handlers are notified now to avoid firewall conflicts.
+- name: Ensure handlers are notified now to avoid firewall conflicts
   meta: flush_handlers
 
-- include_tasks: compose-docker.yml
+- name: Install docker-compose
+  include_tasks: compose-docker.yml
 
-- include_tasks: clear-apt-debian.yml
+- name: Clear APT Cache
+  include_tasks: clear-apt-debian.yml
   when: ansible_os_family == 'Debian'
