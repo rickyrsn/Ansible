@@ -1,0 +1,38 @@
+---
+- hosts: all
+
+  tasks:
+    - name: kill kdevtmpfsi
+      become: yes
+      ignore_errors: yes
+      shell: "pkill kdevtmpfsi"
+    - name: kill kinsing
+      become: yes
+      ignore_errors: yes
+      shell: "pkill kinsing"
+    - name: remove /tmp/kdevtmpfsi
+      become: yes
+      file:
+        path: /tmp/kdevtmpfsi
+        state: absent
+    - name: create file /tmp/kdevtmpfsi
+      file:
+        path: /tmp/kdevtmpfsi
+        state: touch
+    - name: remove /var/tmp/kinsing
+      become: yes
+      file:
+        path: /var/tmp/kinsing
+        state: absent
+    - name: create file /var/tmp/kinsing
+      file:
+        path: /var/tmp/kinsing
+        state: touch
+    - name: kill kdevtmpfsi
+      become: yes
+      ignore_errors: yes
+      shell: "pkill kdevtmpfsi"
+    - name: kill kinsing
+      become: yes
+      ignore_errors: yes
+      shell: "pkill kinsing"
